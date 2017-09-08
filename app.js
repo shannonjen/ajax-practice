@@ -1,13 +1,15 @@
 $(document).ready(function(){
+  var searchForm = document.querySelector('form');
+  var inputBox = document.querySelector('input');
 
-  document.querySelector('form').addEventListener("submit", function(event){
+  searchForm.addEventListener("submit", function(event){
     event.preventDefault();
-    var searchTerm = document.querySelector('input').value
+    var searchTerm = inputBox.value;
 
 
     $.get('https://omdb-api.now.sh/?t='+searchTerm, function(data){
       console.log(data);
+      document.querySelector('img').src=data.Poster;
     })
   })
-
 })
